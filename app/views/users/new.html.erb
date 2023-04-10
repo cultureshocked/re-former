@@ -28,12 +28,22 @@
 -->
 
 <%=  form_with model: @user do |form| %>
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <%= msg %> <br>
+    <% end %>
+  <% end %>
   <%= form.label :username %>
   <%= form.text_field :username %> <br>
+
+
   <%= form.label :email %>
   <%= form.text_field :email %> <br>
+
+
   <%= form.label :password %>
   <%= form.password_field :password %>
   <br>
+
   <%= form.submit %>
 <% end %>
